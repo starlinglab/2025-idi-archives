@@ -18,6 +18,16 @@ b724d181bebd0c83a91fb7e11cb6fb831f7d4f5ebfda9c5b930a9476729106ca  sha256_hashes_
 7876e804913259c6687984aa19f222fba47976e081bf7b77c4d4886939445450  sha256_hashes_no_shortcuts_sorted.txt
 ```
 
+## Timestamps
+
+The commits that added the hash lists are PGP-signed with an [OpenTimestamps](https://opentimestamps.org/) proof embedded in the signature (made with `ots-git-gpg-wrapper`). The `.ots` files next to this README are those proofs extracted per file and upgraded to their Bitcoin attestations, so they verify without the calendar servers.
+
+| Proof | File | Commit | Earliest Bitcoin block |
+|---|---|---|---|
+| `sha256_hashes_no_shortcuts_full_sorted_public.txt.ots` | current list | `da7c71b` | 925133 (2025-11-25 15:13 UTC) |
+| `sha256_hashes_no_shortcuts_sorted_public.txt.ots` | first list, only in git history | `70bb36b` | 925054 (2025-11-24 22:35 UTC) |
+
+
 ## Commands
 
 How files were generated.
@@ -37,4 +47,3 @@ sort < sha256_hashes_no_shortcuts_full.txt > sha256_hashes_no_shortcuts_full_sor
 # Remove file paths so only hashes are left
 cut -d ' ' -f 1 sha256_hashes_no_shortcuts_full_sorted.txt > sha256_hashes_no_shortcuts_full_sorted_public.txt
 ```
-
