@@ -1,30 +1,31 @@
-# Gloria Steinem archive
+# Gloria Steinem Archive
 
-In November 2025, Starling Lab took a SHA-256 fingerprint of every file in the Gloria Steinem archive held on Google Drive, before anything was selected for publication. This folder holds that list and the proofs that it existed by 25 November 2025.
+In November 2025, Starling Lab fingerprinted every file in the Gloria Steinem archive (hosted on Google Drive) using SHA-256 before publication. This folder contains the hash list and proofs of its existence by 25 November 2025.
 
-The list has **35,586 entries** and **34,542 distinct hashes**. The difference is files that appear in more than one folder. It contains hashes only: no filenames, folder names or other text.
+The list has **35,586 entries** and **34,542 distinct hashes** (duplicates reflect files appearing in multiple folders). It contains *only* hashes—no filenames, folder names, or metadata.
 
-## What this proves / what it doesn't
+## Proofs and Limits
+A file whose SHA-256 hash appears in `sha256_hashes_no_shortcuts_full_sorted_public.txt` is proven to:
+- Have these exact bytes;
+- Have existed by **25 November 2025**;
+- Be unchanged since then.
 
-A file whose SHA-256 hash appears in `sha256_hashes_no_shortcuts_full_sorted_public.txt` has these exact bytes, and they existed by 25 November 2025 and have not changed since.
-
-That the list is the Steinem archive rests on Starling Lab's word, through the signatures below. The list does not say who made a file, when it was captured, or who holds the rights. Those claims, where published, are made by the foundation and recorded by Starling, and are labelled as such.
-
-Note: a file that is **not** in the list has not been shown to be fake – its provenance is simply less certain.
+**Limitations:**
+- The list’s authenticity rests on Starling Lab’s attestation (via signatures below).
+- It does *not* confirm authorship, capture dates, or rights holders. Such claims (where published) are made by the foundation and recorded separately by Starling.
+- **Absence from the list does not equate forgery.** Unlisted files may still be authentic; their provenance is simply unverified here.
 
 ## Files
 
-| File | Published | Content |
-|---|---|---|
-| `sha256_hashes_no_shortcuts_full_sorted_public.txt` | yes | 35,586 hashes, sorted, one per line |
-| `sha256_hashes_no_shortcuts_full_sorted_public.txt.ots` | yes | OpenTimestamps proof for the list above |
-| `sha256_hashes_no_shortcuts_sorted_public.txt.ots` | yes | Proof for the first, shorter list (in git history only, commit `70bb36b`) |
-| `sha256_hashes_no_shortcuts_full_sorted.txt` | no | Same hashes with file paths. Its own hash is recorded below. |
+| File | Published? | Content |
+|------|------------|---------|
+| `sha256_hashes_no_shortcuts_full_sorted_public.txt` | ✅ | 35,586 hashes (sorted, one per line). |
+| `sha256_hashes_no_shortcuts_full_sorted_public.txt.ots` | ✅ | OpenTimestamps proof for the above. |
+| `sha256_hashes_no_shortcuts_sorted_public.txt.ots` | ✅ | Proof for the shorter initial list (git history only; commit `70bb36b`). |
+| `sha256_hashes_no_shortcuts_full_sorted.txt` | ❌ | **Same hashes + file paths (unpublished due to sensitive metadata).** Its hash is recorded below. |
 
-### Root hashes
-
-SHA-256 of each list file, recorded in the signed commit `da7c71b`.
-
+### Root Hashes
+SHA-256 of each list file (recorded in signed commit `da7c71b`):
 ```
 459a41c3a17c48ff3772d1555582be1b83b34711d22024e9dd49722fb93435df  md5_hashes_no_shortcuts.txt
 81ebb55ea1491b60ab7dee64f7f1fed13232507e843b2b452716f002512a53f8  missing-hashes.txt
@@ -35,69 +36,80 @@ b724d181bebd0c83a91fb7e11cb6fb831f7d4f5ebfda9c5b930a9476729106ca  sha256_hashes_
 7876e804913259c6687984aa19f222fba47976e081bf7b77c4d4886939445450  sha256_hashes_no_shortcuts_sorted.txt
 ```
 
-The path list is not published because the filenames carry personal names and internal notes. Its hash above commits to its content as of November 2025. Auditors can check it on request.
+**Auditors:** Request access to the path list (`sha256_hashes_no_shortcuts_full_sorted.txt`) for verification.
 
 ## Timestamps
+Commits adding hash lists are PGP-signed with embedded [OpenTimestamps](https://opentimestamps.org/) proofs. The `.ots` files here are extracted and upgraded to Bitcoin attestations (no calendar servers required).
 
-The commits that added the hash lists are PGP-signed with an [OpenTimestamps](https://opentimestamps.org/) proof embedded in the signature (made with `ots-git-gpg-wrapper`). The `.ots` files next to this README are those proofs extracted per file and upgraded to their Bitcoin attestations, so they verify without the calendar servers.
+| Proof File | Target File | Commit | Earliest Bitcoin Block |
+|------------|-------------|--------|------------------------|
+| `sha256_hashes_no_shortcuts_full_sorted_public.txt.ots` | Current list | `da7c71b` | **925133** (25 Nov 2025, 15:13 UTC) |
+| `sha256_hashes_no_shortcuts_sorted_public.txt.ots` | Initial list (git history) | `70bb36b` | **925054** (24 Nov 2025, 22:35 UTC) |
 
-| Proof | File | Commit | Earliest Bitcoin block |
-|---|---|---|---|
-| `sha256_hashes_no_shortcuts_full_sorted_public.txt.ots` | current list | `da7c71b` | 925133 (2025-11-25 15:13 UTC) |
-| `sha256_hashes_no_shortcuts_sorted_public.txt.ots` | first list, only in git history | `70bb36b` | 925054 (2025-11-24 22:35 UTC) |
+**Note:** The current proof also includes later attestations (blocks 925138, 925150, 925237). Any single attestation suffices.
 
-The current proof also carries later attestations at blocks 925138, 925150 and 925237 from other calendar servers. Any one of them is enough.
+## Attestations
 
-## Who witnessed the list
-
-**November 2025.** The commits `70bb36b` and `da7c71b` were signed by the key below, held by the Starling Lab engineer who ran the hashing.
-
+### November 2025
+Commits `70bb36b` and `da7c71b` were signed by Starling Lab’s engineer Cole Capilongo using this key:
 ```
 E8B29C18EC22EEB84CE1548D7DE9FA10A6B58CA5
 ```
 
-**From October 2026.** The list hash `b724d1…`, its Bitcoin block and its `.ots` proof are recorded in Starling Lab's [Authenticated Attributes](https://starlinglab.org/prototypes/authenticated-attributes/) database, which signs and timestamps every entry with the key below.
-
+### October 2026
+The list hash (`b724d1…`), its Bitcoin block, and `.ots` proof were recorded in Starling Lab’s [Authenticated Attributes](https://starlinglab.org/prototypes/authenticated-attributes/) database, signed with:
 ```
 481c9ffcc9ed289391d61358eb5edf5098eabc25a6f1957fd6b3fe01cf56607e
 ```
 
-## How to verify
+## Verification Steps
 
-1. **Check the list.** Download `sha256_hashes_no_shortcuts_full_sorted_public.txt` and confirm its hash.
+1. **Verify the list:**
    ```bash
    sha256sum sha256_hashes_no_shortcuts_full_sorted_public.txt
-   # b724d181bebd0c83a91fb7e11cb6fb831f7d4f5ebfda9c5b930a9476729106ca
+   # Expected: b724d181bebd0c83a91fb7e11cb6fb831f7d4f5ebfda9c5b930a9476729106ca
    ```
-2. **Check the timestamp.** With the [OpenTimestamps client](https://github.com/opentimestamps/opentimestamps-client) and access to a Bitcoin node:
-   ```bash
-   ots verify sha256_hashes_no_shortcuts_full_sorted_public.txt.ots
-   ```
-   Without a node, `ots info` shows the Bitcoin block heights the proof commits to, and any block explorer shows their dates. The branch ending in block 925133 goes through transaction [`cb8c7c24…73c22f`](https://mempool.space/tx/cb8c7c2477d081d25c93fb46ea41384932c22cbb667e68d64a7885935473c22f), whose `OP_RETURN` output is `c99cabad348e5487176348ee37dad991fa9d1291a7ea85f1f2e88bbe0b317477`, the Merkle root the proof derives from the list hash.
-3. **Check a file.** Hash the file you have and look it up in the list.
+
+2. **Verify the timestamp:**
+   - With a Bitcoin node:
+     ```bash
+     ots verify sha256_hashes_no_shortcuts_full_sorted_public.txt.ots
+     ```
+   - Without a node: Use `ots info` to check block heights. The proof’s Merkle root (`c99cabad348e5487176348ee37dad991fa9d1291a7ea85f1f2e88bbe0b317477`) is in transaction [`cb8c7c24…73c22f`](https://mempool.space/tx/cb8c7c2477d081d25c93fb46ea41384932c22cbb667e68d64a7885935473c22f).
+
+3. **Verify a file:**
    ```bash
    sha256sum "Gloria Steinem by Katie Lyman.jpg"
    grep -c bb5afa9d533a3c6b03e299f2e3eef9e5781c7fcd4587d23c66ec4d222dfab947 sha256_hashes_no_shortcuts_full_sorted_public.txt
-   # 1
+   # Output: 1 (match found)
    ```
-4. **Check the commit signature.** `git log --show-signature da7c71b` shows the PGP signature and the embedded timestamp.
-5. **Check the Cardano registrations.** Each transaction below carries, under metadata label 674, a JSON record with the file's SHA-256 and the attributes listed. Explorers show it under the transaction's metadata tab. It can also be read without an account:
+
+4. **Verify the commit signature:**
    ```bash
-   curl -s -X POST https://api.koios.rest/api/v1/tx_metadata -H "content-type: application/json" \
-     -d '{"_tx_hashes":["6c75d77f8a9f8561c10b9c7cb4589f1ce75b4a34ee0593c41f6b8f3178452ab5"]}'
+   git log --show-signature da7c71b
    ```
-   The record is split into 64-character strings; join them to get the JSON.
 
-## Published items
+5. **Check Cardano registrations:**
+   - Metadata for each transaction is under label `674`. Example:
+     ```bash
+     curl -s -X POST https://api.koios.rest/api/v1/tx_metadata \
+       -H "content-type: application/json" \
+       -d '{"_tx_hashes":["6c75d77f8a9f8561c10b9c7cb4589f1ce75b4a34ee0593c41f6b8f3178452ab5"]}'
+     ```
+   - **Note:** Metadata is split into 64-character strings; concatenate to reconstruct JSON.
 
-| Item | SHA-256 | Cardano mainnet registration (27 Oct 2026) |
-|---|---|---|
-| This hash list | `b724d181bebd0c83a91fb7e11cb6fb831f7d4f5ebfda9c5b930a9476729106ca` | [`a331be12…c50f72`](https://cardanoscan.io/transaction/a331be1223f534b4d7e27ee1063f5e8008909ebf7a99bef715f1c4abb8c50f72?tab=metadata), block 14122765. Carries the Bitcoin block, transaction and `OP_RETURN` above, the signed commit and key, and the entry counts. |
-| Portrait of Gloria Steinem by Katie Lyman, June 2021 (according to the foundation) | `bb5afa9d533a3c6b03e299f2e3eef9e5781c7fcd4587d23c66ec4d222dfab947` | [`6c75d77f…452ab5`](https://cardanoscan.io/transaction/6c75d77f8a9f8561c10b9c7cb4589f1ce75b4a34ee0593c41f6b8f3178452ab5?tab=metadata), block 14122770. Carries the credit, the rights, and a pointer to this list's hash, CID and Bitcoin proof. |
+## Published Items
 
-The photograph is line 26,053 of the list. The published file is byte-for-byte the file in the archive. Its credit and date are as given by the foundation, recorded by Starling in Authenticated Attributes under the CID `bafkreif3ll5j2uz2hrvqhyuz6lr656pfpaoh7tkfq7jdyzxmjurc36vzi4`. The list is recorded under `bafkreifxetiydpv5bsb2sh5x4eoln64dd56u6xv73kofxeyksr3hfeigzi`.
+| Item | SHA-256 | Cardano Registration (27 Oct 2026) |
+|------|---------|------------------------------------|
+| **Hash list** | `b724d181bebd0c83a91fb7e11cb6fb831f7d4f5ebfda9c5b930a9476729106ca` | [`a331be12…c50f72`](https://cardanoscan.io/transaction/a331be1223f534b4d7e27ee1063f5e8008909ebf7a99bef715f1c4abb8c50f72?tab=metadata) (Block 14122765). Includes Bitcoin block/transaction, signed commit, key, and entry counts. |
+| **Portrait of Gloria Steinem** (Katie Lyman, June 2021) | `bb5afa9d533a3c6b03e299f2e3eef9e5781c7fcd4587d23c66ec4d222dfab947` | [`6c75d77f…452ab5`](https://cardanoscan.io/transaction/6c75d77f8a9f8561c10b9c7cb4589f1ce75b4a34ee0593c41f6b8f3178452ab5?tab=metadata) (Block 14122770). Includes credit, rights, and pointers to the list’s hash/CID/Bitcoin proof. |
 
-The `rights` field in the photograph's on-chain record holds a placeholder written before the foundation's licence wording was received. On-chain records cannot be edited. The foundation's wording is recorded in Authenticated Attributes, which is append-only, so the correction and its date are visible there.
+**Details:**
+- The photograph is **line 26,053** in the list. The published file matches the archive’s bytes exactly.
+- **Credits/dates** are as provided by the foundation and recorded by Starling under CID `bafkreif3ll5j2uz2hrvqhyuz6lr656pfpaoh7tkfq7jdyzxmjurc36vzi4`.
+- The list is recorded under CID `bafkreifxetiydpv5bsb2sh5x4eoln64dd56u6xv73kofxeyksr3hfeigzi`.
+- **Rights note:** The on-chain record uses a placeholder (pre-licence wording). The foundation’s final wording is recorded in Authenticated Attributes (append-only; corrections are timestamped).
 
 ## Commands
 
